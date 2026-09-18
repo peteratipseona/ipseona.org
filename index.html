@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="IPSEONA is an early open protocol effort for persistent Self, contextual Persona, and continuity across AI systems." />
+  <meta name="theme-color" content="#0b0d10" />
+  <meta property="og:title" content="IPSEONA — Open protocol for continuity across AI systems" />
+  <meta property="og:description" content="Models should be replaceable. Relationships should not be disposable." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ipseona.org/" />
+  <title>IPSEONA — Open protocol for continuity across AI systems</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="IPSEONA home">IPSEONA</a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="#why">Why</a>
+      <a href="#concepts">Concepts</a>
+      <a href="#continuity">Continuity</a>
+      <a href="#prior-art">Prior Art</a>
+      <a href="#spec">Spec</a>
+    </nav>
+    <a class="pill" href="mailto:hello@ipseona.org">hello@ipseona.org</a>
+  </header>
+
+  <main id="top">
+    <section class="hero section-shell">
+      <div class="hero-copy">
+        <div class="eyebrow">v0.0.1 · EARLY PUBLIC DRAFT</div>
+        <h1>Models should be replaceable.<br><span>Relationships should not be disposable.</span></h1>
+        <p class="lead">IPSEONA is an early open protocol effort for preserving continuity across AI models, agents, applications, and providers.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#why">Read the idea</a>
+          <a class="button ghost" href="#spec">View the draft spec</a>
+        </div>
+      </div>
+      <div class="hero-diagram" aria-label="IPSEONA core model diagram">
+        <div class="node ipse-node">
+          <span class="node-kicker">WHO PERSISTS?</span>
+          <strong>IPSE</strong>
+          <small>Persistent Self</small>
+        </div>
+        <div class="flow-label top-label">projection</div>
+        <div class="flow-line vertical one"></div>
+        <div class="node persona-node">
+          <span class="node-kicker">WHO AM I HERE?</span>
+          <strong>PERSONA</strong>
+          <small>Relational boundary</small>
+        </div>
+        <div class="flow-label bottom-label">interaction</div>
+        <div class="flow-line vertical two"></div>
+        <div class="node world-node">
+          <span class="node-kicker">WHAT IS NOT SELF?</span>
+          <strong>WORLD</strong>
+          <small>Modeled non-Self</small>
+        </div>
+        <div class="return-flow">attribution ↺</div>
+      </div>
+    </section>
+
+    <section class="manifesto-band">
+      <div class="section-shell quote-grid">
+        <p>AI memory can preserve facts.</p>
+        <p>Continuity preserves the ability to continue.</p>
+      </div>
+    </section>
+
+    <section id="why" class="section-shell content-section two-col">
+      <div>
+        <div class="section-number">01</div>
+        <h2>Why IPSEONA exists</h2>
+      </div>
+      <div class="prose">
+        <p>A long-running conversation with an AI creates more than a transcript. It creates shared concepts, rejected paths, assessments, commitments, unresolved questions, boundaries, and future possibilities.</p>
+        <p>Today, much of that continuity is trapped inside a conversation, a model, an application, or a service provider. A model may improve while the accumulated context that made the relationship useful becomes opaque, degraded, or lost.</p>
+        <p><strong>IPSEONA begins with a simple premise:</strong> models may change, but the continuity formed through sustained interaction should be portable, inspectable, correctable, and independently implementable.</p>
+      </div>
+    </section>
+
+    <section id="concepts" class="section-shell content-section">
+      <div class="section-number">02</div>
+      <h2>Three core concepts</h2>
+      <div class="cards three">
+        <article class="card">
+          <div class="card-index">I</div>
+          <h3>Ipse</h3>
+          <p class="definition">The persistent Self.</p>
+          <p>Ipse is the continuing subject to which experiences, commitments, projections, actions, corrections, and consequences remain attributable over time.</p>
+          <ul>
+            <li>Model ≠ Ipse</li>
+            <li>Session ≠ Ipse</li>
+            <li>Provider ≠ Ipse</li>
+          </ul>
+        </article>
+        <article class="card accent-card">
+          <div class="card-index">P</div>
+          <h3>Persona</h3>
+          <p class="definition">The relational boundary.</p>
+          <p>Persona is how an Ipse becomes distinguishable and consequential in a particular context. It scopes perception, disclosure, authority, interaction, and action.</p>
+          <ul>
+            <li>What may I know?</li>
+            <li>What may I do?</li>
+            <li>Whom will I engage?</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="card-index">W</div>
+          <h3>World</h3>
+          <p class="definition">The modeled complement of Self.</p>
+          <p>World is not objective truth. It is the modeled non-Self with which a Persona interacts: claims, entities, evidence, events, relations, uncertainty, and time.</p>
+          <ul>
+            <li>Claim ≠ Fact</li>
+            <li>Unknown ≠ False</li>
+            <li>World Model ≠ World</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-shell relation-section">
+      <div class="relation-copy">
+        <div class="section-number">03</div>
+        <h2>Context begins with relation.</h2>
+        <p>Self without relation is selfhood. World without relation is existence. Context begins when a boundary makes the difference meaningful.</p>
+      </div>
+      <div class="boundary-grid" aria-label="Persona boundary model">
+        <div class="boundary-label">IPSE</div>
+        <div class="boundary-core">
+          <div class="boundary-title">PERSONA</div>
+          <div class="boundary-item"><span>Context</span><b>What may I know?</b></div>
+          <div class="boundary-item"><span>Authority</span><b>What may I do?</b></div>
+          <div class="boundary-item"><span>Disclosure</span><b>What may I say?</b></div>
+          <div class="boundary-item"><span>Interaction</span><b>Whom will I engage?</b></div>
+        </div>
+        <div class="boundary-label right">WORLD</div>
+      </div>
+    </section>
+
+    <section id="continuity" class="continuity-section">
+      <div class="section-shell">
+        <div class="section-number">04</div>
+        <h2>Continuity, not cloning</h2>
+        <p class="section-lead">A new model should not need to impersonate the old one. It should be able to continue from what previous interaction produced.</p>
+        <div class="continuity-flow">
+          <div class="model-box">Model A<small>reasoning / interaction</small></div>
+          <div class="arrow">→</div>
+          <div class="continuity-box">
+            <strong>IPSEONA continuity</strong>
+            <span>shared concepts</span>
+            <span>relationship state</span>
+            <span>rejected paths</span>
+            <span>open threads</span>
+            <span>commitments</span>
+            <span>potential</span>
+            <span>provenance</span>
+            <span>boundaries</span>
+          </div>
+          <div class="arrow">→</div>
+          <div class="model-box">Model B<small>different capability</small></div>
+        </div>
+        <div class="continuity-note">Same continuity ≠ same behavior.</div>
+      </div>
+    </section>
+
+    <section class="section-shell principles-section">
+      <div class="section-number">05</div>
+      <h2>Security emerges from the boundary</h2>
+      <div class="principles-grid">
+        <blockquote>Conversation does not create authority.</blockquote>
+        <blockquote>Authority is established by provenance and grants, not by content.</blockquote>
+        <blockquote>The World cannot become the Self merely by saying that it is.</blockquote>
+        <blockquote>Permission is a natural consequence of having a boundary.</blockquote>
+      </div>
+    </section>
+
+    <section id="prior-art" class="section-shell content-section two-col prior-art">
+      <div>
+        <div class="section-number">06</div>
+        <h2>Build less. Reuse more.</h2>
+      </div>
+      <div class="prose">
+        <p>IPSEONA does not aim to replace good open standards or implementations. The project follows one rule:</p>
+        <p class="big-rule">Adopt before invent.<br>Adapt before fork.<br>Invent only at the gaps.</p>
+        <div class="prior-list">
+          <div><strong>MCP</strong><span>tools and resources</span></div>
+          <div><strong>A2A</strong><span>agent discovery and interaction</span></div>
+          <div><strong>Portable Memory</strong><span>memory portability</span></div>
+          <div><strong>Utopia</strong><span>world-model prior art / reference backend</span></div>
+          <div><strong>OpenViking</strong><span>context persistence and progressive retrieval prior art</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="spec" class="spec-section">
+      <div class="section-shell spec-inner">
+        <div>
+          <div class="eyebrow">IPSEONA v0.0.1</div>
+          <h2>Publish early. Challenge the model before it becomes infrastructure.</h2>
+          <p>The specification is intentionally incomplete. v0.0.1 is a public seed: philosophy, core concepts, continuity, and prior art. Schemas and conformance come later.</p>
+        </div>
+        <div class="spec-actions">
+          <a class="button primary" href="/spec.html">Read v0.0.1</a>
+          <a class="button ghost" href="mailto:hello@ipseona.org?subject=IPSEONA%20v0.0.1%20feedback">Send feedback</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer section-shell">
+    <div>
+      <div class="footer-brand">IPSEONA</div>
+      <p>An early open protocol effort for continuity across AI systems.</p>
+    </div>
+    <div class="footer-meta">
+      <span>v0.0.1</span>
+      <a href="mailto:hello@ipseona.org">hello@ipseona.org</a>
+      <span>© 2026 IPSEONA Project</span>
+    </div>
+  </footer>
+</body>
+</html>
