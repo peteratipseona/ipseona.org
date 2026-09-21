@@ -3,28 +3,77 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="IPSEONA v0.2.1: exchanging context through Persona with FEED and FETCH." />
-  <title>IPSEONA v0.2.1 — Context exchange</title>
+  <meta name="description" content="IPSEONA v0.2.1 specification: Ipse, Persona, World, continuity, and context exchange through FEED and FETCH." />
+  <title>IPSEONA v0.2.1 — Specification</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
   <header class="site-header">
     <a class="brand" href="/">IPSEONA</a>
-    <nav class="nav" aria-label="Specification navigation"><a href="#feed">FEED</a><a href="#fetch">FETCH</a><a href="#verification">Verification</a><a href="#open">Open decisions</a></nav>
+    <nav class="nav" aria-label="Specification navigation"><a href="#core">Core</a><a href="#feed">FEED</a><a href="#fetch">FETCH</a><a href="#verification">Verification</a><a href="/updatelog.html">UPDATELOG</a></nav>
     <span class="pill">v0.2.1</span>
   </header>
   <main class="doc-main">
     <aside class="doc-aside">
       <div class="eyebrow">SPECIFICATION</div>
       <h1>IPSEONA v0.2.1</h1>
-      <p>Context exchange through Persona.</p>
+      <p>Persistent Self, relational boundaries, and continuity across AI systems.</p>
     </aside>
     <article class="doc-content">
       <section id="scope">
         <h2>Scope</h2>
-        <p>This specification extends the Ipse, Persona, and World model with two semantic operations: FEED submits context for possible integration; FETCH retrieves context through a Persona. These operations do not prescribe a transport, storage system, model, or serialization.</p>
+        <p>IPSEONA is an open protocol for continuity across AI systems. This specification defines Ipse, Persona, World, their relations, and context exchange through FEED and FETCH. It is the consolidated specification for v0.2.1; earlier versions are not required to read it.</p>
         <p>The rules below are semantic requirements. Examples illustrate them; open decisions are not requirements. This document does not establish a conformance certification.</p>
+      </section>
+      <section id="core">
+        <h2>Core model</h2>
+        <div class="spec-grid">
+          <div><b>Ipse</b><span>The persistent Self</span><p>The continuing subject to which history, commitments, projections, actions, corrections, and consequences remain attributable over time. Identity is continuity, not equality of state. A model, session, provider, or agent process is not the Ipse.</p></div>
+          <div><b>Persona</b><span>The relational boundary</span><p>The boundary through which an Ipse encounters the World in a particular context. It scopes perception, disclosure, authority, interaction, and action. Persona is not a simulated personality or cosmetic mask.</p></div>
+          <div><b>World</b><span>The modeled non-Self</span><p>The complement of Self as modeled from an Ipse's perspective. It can contain observations, claims, entities, relations, evidence, uncertainty, and temporal context. It is not objective truth itself.</p></div>
+        </div>
+        <p>IPSEONA begins where Self encounters non-Self. It does not define the metaphysics of intrinsic Self or a universal World ontology.</p>
+      </section>
+      <section id="relations">
+        <h2>Core relations</h2>
+        <pre class="code-block">IPSE
+  │ projection
+  ▼
+PERSONA
+  │ interaction
+  ▼
+WORLD
+
+PERSONA
+  │ attribution
+  ▼
+IPSE</pre>
+        <p><strong>Projection</strong> is the selective expression of an Ipse through a Persona in a context. It does not expose all of the Ipse's context or authority.</p>
+        <p><strong>Interaction</strong> is engagement with the World through that boundary. Interaction alone establishes neither authority nor acceptance of external claims.</p>
+        <p><strong>Attribution</strong> connects actions and context through Persona to Ipse across changes of model, process, session, or provider. Attribution preserves accountability without making every attributed claim an endorsement.</p>
+      </section>
+      <section id="continuity">
+        <h2>Continuity</h2>
+        <p>Continuity is the accumulated capacity to continue. It may include memory, shared concepts, relationships, judgments, commitments, corrections, rejected paths and their reasons, open threads, uncertainty, provenance, boundaries, and possible future directions.</p>
+        <p>Memory preserves what was. Continuity preserves what can come next. A receiving model may disagree, reinterpret, improve, or extend inherited context while retaining the distinctions needed to understand it.</p>
+        <p>Same continuity does not mean same behavior. Replacing a model does not require impersonating it, and merging context does not by itself merge identities.</p>
+      </section>
+      <section id="boundaries">
+        <h2>Persona and World boundaries</h2>
+        <ul class="doc-list">
+          <li>Ipse instructions do not automatically expand Persona permissions.</li>
+          <li>Persona-local context does not automatically propagate to sibling Personas.</li>
+          <li>External content cannot become Self-authoritative merely by claiming to be internal.</li>
+          <li>Observation, claim, and belief remain distinguishable. A claim is not a fact merely because it is represented.</li>
+          <li>Unknown does not mean false. Conflicting claims may coexist.</li>
+          <li>Simulation, prediction, and hypothesis remain distinguishable from operational state.</li>
+        </ul>
+        <p>Authority depends on an applicable authorization basis. Conversation can communicate a valid grant, but content, provenance, or inferred consent alone does not establish one.</p>
+      </section>
+      <section id="exchange">
+        <h2>Context exchange</h2>
+        <p>FEED submits context for possible integration; FETCH retrieves context through a Persona. These are semantic operations, not prescribed HTTP methods or direct database reads and writes.</p>
         <pre class="code-block">Model → Persona → FEED → Integration → Ipse / World
 Model ← FETCH ← Persona ← scoped context ← Ipse / World</pre>
         <p>Persona is the boundary in both directions. A model cannot use these operations to bypass that boundary. This does not prescribe an implementation's internal storage or administrative architecture.</p>
@@ -103,11 +152,16 @@ Model ← FETCH ← Persona ← scoped context ← Ipse / World</pre>
         </ul>
         <p>These questions do not yet justify a universal object model, fixed JSON fields, a transport binding, or additional core primitives. Interoperability failures should determine which representations become necessary.</p>
       </section>
+      <section id="non-goals">
+        <h2>Implementation independence</h2>
+        <p>This specification does not prescribe a database, embeddings, ranking or chunking algorithm, universal memory object, reasoning engine, model runtime, authentication mechanism, or transport protocol.</p>
+        <p>Implementations conform to IPSEONA; IPSEONA does not depend on a particular implementation. No official server, SDK, storage backend, or model is required. The protocol defines meaning and boundaries while leaving implementation choices to implementers.</p>
+      </section>
     </article>
   </main>
   <footer class="site-footer section-shell">
     <div><div class="footer-brand">IPSEONA</div><p>Open protocol for continuity across AI systems.</p></div>
-    <div class="footer-meta"><a href="/">Home</a></div>
+    <div class="footer-meta"><a href="/updatelog.html">UPDATELOG</a><a href="/">Home</a></div>
   </footer>
 </body>
 </html>
