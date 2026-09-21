@@ -1,23 +1,24 @@
-# IPSEONA website — v0.0.1
+# IPSEONA website — v0.2.1
 
-Static first-public-draft website for https://ipseona.org.
+Static website for https://ipseona.org.
 
 ## Local preview
 
+Run from this directory:
+
 ```bash
-python3 -m http.server 8080
+python3 -m http.server 8080 --bind 127.0.0.1
 ```
 
-Then open http://localhost:8080.
+Open http://127.0.0.1:8080.
 
-## Deploy
+## Specification
 
-This folder is ready for GitHub Pages, Cloudflare Pages, Netlify, Vercel static hosting, or any ordinary web server.
-
-- Canonical domain: `ipseona.org`
-- `CNAME` is included for GitHub Pages.
+- `/spec.html` points to the current specification, `/spec-v0.2.1.html`.
+- `/spec-v0.0.1.html` preserves the previous published specification.
 - No build step is required.
 
-## Public posture
+## Publishing
 
-v0.0.1 is intentionally small and provisional. The website presents IPSEONA as an early open protocol effort, not a finished standard or product.
+The website repository is `peteratipseona/ipseona.org`, branch `main`.
+Canonical domain: `ipseona.org`. Verify the public response after publishing.

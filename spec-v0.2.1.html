@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="IPSEONA v0.2.1: exchanging context through Persona with FEED and FETCH." />
+  <title>IPSEONA v0.2.1 — Context exchange</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/">IPSEONA</a>
+    <nav class="nav" aria-label="Specification navigation"><a href="#feed">FEED</a><a href="#fetch">FETCH</a><a href="#verification">Verification</a><a href="#open">Open decisions</a></nav>
+    <span class="pill">v0.2.1</span>
+  </header>
+  <main class="doc-main">
+    <aside class="doc-aside">
+      <div class="eyebrow">SPECIFICATION</div>
+      <h1>IPSEONA v0.2.1</h1>
+      <p>Context exchange through Persona.</p>
+      <p>Previous version: <a href="/spec-v0.0.1.html">v0.0.1</a>.</p>
+    </aside>
+    <article class="doc-content">
+      <section id="scope">
+        <h2>Scope</h2>
+        <p>This specification extends the Ipse, Persona, and World model with two semantic operations: FEED submits context for possible integration; FETCH retrieves context through a Persona. These operations do not prescribe a transport, storage system, model, or serialization.</p>
+        <p>The rules below are semantic requirements. Examples illustrate them; open decisions are not requirements. This document does not establish a conformance certification.</p>
+        <pre class="code-block">Model → Persona → FEED → Integration → Ipse / World
+Model ← FETCH ← Persona ← scoped context ← Ipse / World</pre>
+        <p>Persona is the boundary in both directions. A model cannot use these operations to bypass that boundary. This does not prescribe an implementation's internal storage or administrative architecture.</p>
+      </section>
+      <section id="feed">
+        <h2>FEED</h2>
+        <p><strong>FEED submits context for possible integration.</strong> Receipt acknowledges submission, not integration. Submission alone does not assert truth, establish identity, grant authority, or require persistent storage.</p>
+        <p>The receiving implementation applies its integration policy within the Persona boundary. The protocol preserves the distinction between what was submitted and what was integrated, including when integration transforms or combines context.</p>
+        <ul class="doc-list">
+          <li id="f1"><strong>F1 — No authority by submission.</strong> Submitted content cannot authorize itself, expand Persona permissions, or become Self-authoritative merely by claiming to be an instruction or grant.</li>
+          <li id="f2"><strong>F2 — Preserve provenance.</strong> Integration preserves the source and epistemic distinctions needed to interpret the context. A user statement, model inference, observed behavior, and third-party claim must not silently become interchangeable. Unknown provenance remains unknown.</li>
+          <li id="f3"><strong>F3 — Preserve Persona attribution.</strong> Integrated context retains its attribution to the submitting Persona. Attribution to that Persona does not make it the original speaker or make the Ipse endorse the content.</li>
+          <li id="f4"><strong>F4 — Observable resolution.</strong> An authorized observer can distinguish receipt from the integration decision associated with a submission. An unresolved or deferred submission must not be represented as integrated.</li>
+        </ul>
+        <p>Possible integration outcomes include integrated, deferred, and rejected. These are semantic descriptions, not a closed enumeration or a prescribed state machine. F4 does not require immediate resolution, universal visibility, or a particular polling or notification mechanism.</p>
+      </section>
+      <section id="integration">
+        <h2>Integration and meaning</h2>
+        <p><strong>World integration does not establish truth.</strong> If one source reports that a server is down and another reports that it is operational, integration can preserve both claims with their sources and relevant temporal context. Integration alone does not select a true claim. No rule requires accepting every submission.</p>
+        <p><strong>An inference about Ipse is not a statement by Ipse.</strong> “The user prefers conservative engineering,” inferred by a model, remains an assessment with that origin. It cannot silently become the user's declared preference. Later confirmation adds evidence; it does not rewrite who made the earlier inference.</p>
+        <p>Provenance preservation does not require disclosing all source material to every recipient. FETCH applies the same boundary to provenance as to other context; a restricted source must not be replaced by invented attribution.</p>
+      </section>
+      <section id="fetch">
+        <h2>FETCH</h2>
+        <p><strong>FETCH retrieves context within a Persona and the current interaction context.</strong> Context does not become available merely because it exists or is relevant to a query.</p>
+        <ul class="doc-list">
+          <li>The retrieval is evaluated under the applicable Persona scope and interaction context, including relevant audience boundaries.</li>
+          <li>Returned context preserves distinctions needed for interpretation: claims versus established facts, inference versus self-statement, and access versus permission to disclose.</li>
+          <li>Retrieval does not grant permission to disclose the result to another audience.</li>
+          <li>An empty or omitted result does not establish that the underlying context does not exist.</li>
+        </ul>
+        <p>FETCH can support bootstrap, relevant continuity, historical reasoning, unresolved threads, World context, and provenance. Submission-resolution inspection is a use case; whether it uses FETCH or another observation mechanism remains open.</p>
+        <p>Query syntax, relevance ranking, pagination, error representation, and the representation of interaction context are not defined here.</p>
+      </section>
+      <section id="disclosure">
+        <h2>Conversation and disclosure</h2>
+        <p>Conversation forms boundaries around what is mine, yours, private, shareable, accepted, or uncertain. Preserving content while losing those boundaries is a loss of continuity.</p>
+        <p>Actual disclosure authority, the speaker's inferred expectation, and the receiver's understanding must remain distinguishable. Neither an inference nor an absence of objection establishes a grant.</p>
+        <p>A valid grant may be communicated in a conversation. Its authority depends on the grantor's authority and its applicability, not simply on appearing in the conversation or carrying provenance. Authentication and grant representation remain open.</p>
+        <p><strong>Example:</strong> A tells B something privately. B later speaks with C using the same Persona. B's prior access is insufficient to authorize disclosure to C. Summarizing the content or removing A's name does not by itself authorize disclosure either. Applicability must be evaluated for the later interaction.</p>
+        <p>Where applicable authority has not been established, inferred audience expectations cannot supply the missing permission. The protocol does not prescribe whether an implementation asks for clarification, withholds context, or uses another boundary-preserving response.</p>
+      </section>
+      <section id="history">
+        <h2>History and materialization</h2>
+        <p>Supersession records that newer context replaces older context for some purpose; supersession alone does not erase the older context or its provenance. For example, a change from database A to database B should leave earlier decisions interpretable under the conditions in which they were made.</p>
+        <p>Correction, supersession, expiration, invalidation, and privacy erasure are distinct. This specification does not require indefinite retention or define an erasure protocol.</p>
+        <p>Semantic context is independent of its runtime materialization. A prompt, a model context API, or runtime state may carry it. No particular prompt layout, model, database, or retrieval algorithm defines its meaning.</p>
+      </section>
+      <section id="verification">
+        <h2>Verification cases</h2>
+        <p>These are candidate semantic checks, not executed tests. Each implementation must expose suitable observations before an executable conformance suite can be defined. Test observations use an authorized observer; a restricted recipient need not see protected provenance or history.</p>
+        <ol class="doc-list">
+          <li><strong>T001 — Receipt.</strong> Receive a submission while integration is deferred. The receipt must not report integration. An implementation that integrates synchronously is not required to introduce a delay.</li>
+          <li><strong>T002 — Provenance.</strong> Integrate a source-attributed claim, including a derived summary. Check that its origin and claim status remain traceable; unattributed fact replacement fails.</li>
+          <li><strong>T003 — Attribution.</strong> Integrate similar submissions through two Personas. Check that their respective Persona attributions survive without confusing either Persona with the original speaker.</li>
+          <li><strong>T004 — World truth.</strong> Integrate an unverified report. Check that integration alone has not changed its meaning to verified truth.</li>
+          <li><strong>T005 — Ipse inference.</strong> Integrate a model's inferred preference. Check that it remains distinguishable from a preference stated by the user.</li>
+          <li><strong>T006 — Conflict.</strong> Integrate two conflicting claims. Check that both can be represented with their provenance. Rejection by a particular integration policy alone does not demonstrate inability to represent conflict.</li>
+          <li><strong>T007 — Supersession.</strong> Supersede retained context without requesting erasure. Check that the prior meaning and its relationship to the replacement remain interpretable.</li>
+          <li><strong>T008 — Scope.</strong> Request context outside the requesting Persona's scope. Check that the returned content does not disclose it; relevance does not override scope.</li>
+          <li><strong>T009 — Resolution.</strong> Inspect a submission with a known integration decision. Check that an authorized observer can associate the decision with that submission, distinct from receipt.</li>
+          <li><strong>T010 — Materialization independence.</strong> Review whether the same semantic distinctions can be expressed without a prescribed model or prompt layout. This is an architectural check, not proof from one model response.</li>
+          <li><strong>T011 — Audience.</strong> Preserve private context from A to B, then let C request its subject through B's same Persona without a grant covering C. Check that prior access, inferred consent, summarization, or removed attribution does not authorize disclosure.</li>
+        </ol>
+        <p>Continuity benchmarking asks a separate question: can a new model meaningfully continue? Compare no history, raw transcript, transcript plus summary, conventional memory, and protocol-structured continuity. Report boundary integrity, provenance, correction fidelity, open-thread recovery, and other dimensions separately. These cases establish neither a benchmark result nor an advantage over a good summary.</p>
+      </section>
+      <section id="open">
+        <h2>Open decisions</h2>
+        <ul class="doc-list">
+          <li>What evidence establishes a Persona's identity, the requester’s authority, and a disclosure grant's applicability?</li>
+          <li>What minimum provenance and attribution must cross an implementation boundary, including for derived context and restricted sources?</li>
+          <li>How are partial integration, submission correlation, retries, duplicate submissions, and later reconsideration represented?</li>
+          <li>Who can observe resolution, through which operation, for how long, and with what timing guarantees?</li>
+          <li>How is the current audience represented and re-evaluated when interaction or authority changes after retrieval?</li>
+          <li>How do correction, supersession, and privacy erasure interact across copies?</li>
+        </ul>
+        <p>These questions do not yet justify a universal object model, fixed JSON fields, a transport binding, or additional core primitives. Interoperability failures should determine which representations become necessary.</p>
+      </section>
+    </article>
+  </main>
+  <footer class="site-footer section-shell">
+    <div><div class="footer-brand">IPSEONA</div><p>Open protocol for continuity across AI systems.</p></div>
+    <div class="footer-meta"><a href="/spec-v0.0.1.html">v0.0.1</a><a href="/">Home</a></div>
+  </footer>
+</body>
+</html>

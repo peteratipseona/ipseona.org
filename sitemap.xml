@@ -2,4 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://ipseona.org/</loc></url>
   <url><loc>https://ipseona.org/spec.html</loc></url>
+  <url><loc>https://ipseona.org/spec-v0.2.1.html</loc></url>
+  <url><loc>https://ipseona.org/spec-v0.0.1.html</loc></url>
 </urlset>
