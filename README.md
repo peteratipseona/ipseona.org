@@ -15,10 +15,10 @@ Open http://127.0.0.1:8080.
 ## Specification
 
 - `/spec.html` points to the current specification, `/spec-v0.2.1.html`.
-- `/spec-v0.0.1.html` preserves the previous published specification.
 - No build step is required.
 
 ## Publishing
 
 The website repository is `peteratipseona/ipseona.org`, branch `main`.
+Pushing `main` triggers Cloudflare automatic deployment.
 Canonical domain: `ipseona.org`. Verify the public response after publishing.
